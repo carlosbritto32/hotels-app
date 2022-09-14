@@ -1,18 +1,21 @@
-import {Routes,Route} from "react-router-dom"
-import {Home} from "./components/Home";
-import {Login} from "./components/Login"
-import {Register} from "./components/Register"
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Provider } from "./context/AuthContext";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
 
 function App() {
-  return(
+  return (
     <div className="bg-slate-100 h-screen text-black flex">
-    <Routes>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/register" element={<Register/>}/>      
-    </Routes>
+      <Provider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </Provider>
     </div>
-  )
+  );
 }
 
 export default App;
