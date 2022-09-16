@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { ErrorMsg } from "../components/ErrorMsg";
 
 export function Register() {
   const [user, setUser] = useState({
@@ -27,18 +28,12 @@ export function Register() {
       navigate("/");
     } catch (error) {
       console.log(error.code);
-      if (error.code === "auth/weak-password") {
-        setError("The password must have at least 6 characters");
-      } else if (error.code === "auth/email-already-in-use") {
-        setError("This email is already registered!");
-      } else if (error.code === "auth/invalid-email") {
-        setError("invalid email");
-      }
+      setError(error.message);
     }
   };
   return (
     <div>
-      {error && <p>{error}</p>}
+      {error && <ErrorMsg message={error} />}
       <form onSubmit={handleSubmit}>
         <input
           type="email"
