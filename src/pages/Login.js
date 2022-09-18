@@ -41,30 +41,57 @@ export function Login() {
     }
   };
   return (
-    <div>
+    <div className="w-full max-w-sm m-auto">
       {error && <ErrorMsg message={error} />}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="youremail@gmail.com"
-          onChange={handleChange}
-        />
-        <label htmlFor="email">Email</label>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-md px-8 pt-6 pb-8 mb-4 rounded-lg"
+      >
+        <div className="mb-5">
+          <label
+            htmlFor="email"
+            className="block text-black-700 font-bold mb-2 text-sm"
+          >
+            Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="youremail@gmail.com"
+            className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 "
+            onChange={handleChange}
+          />
+        </div>
 
-        <input
-          type="password"
-          name="password"
-          id="password"
-          onChange={handleChange}
-        />
-        <label htmlFor="password">Password</label>
+        <div className="mb-5">
+          <label
+            htmlFor="password"
+            className="block text-black-700 font-bold mb-2 text-sm"
+          >
+            Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="*******"
+            className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 "
+            onChange={handleChange}
+          />
+        </div>
 
-        <button>Log in</button>
+        <button className="bg-teal-400 hover:bg-teal-600 px-4 py-2 rounded-lg text-white font-bold shadow-md">
+          Log in
+        </button>
       </form>
 
-      <button onClick={handleGoogleSignIn}>Login with Google</button>
+      <button
+        onClick={handleGoogleSignIn}
+        className="bg-blue-500 hover:bg-blue-800 text-white px-4 py-2 rounded-lg shadow-md text-center w-full"
+      >
+        Login with Google
+      </button>
     </div>
   );
 }
