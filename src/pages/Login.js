@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ErrorMsg } from "../components/ErrorMsg";
 
 export function Login() {
@@ -41,11 +41,11 @@ export function Login() {
     }
   };
   return (
-    <div className="w-full max-w-sm m-auto">
+    <div className="w-full max-w-sm m-auto pt-20">
       {error && <ErrorMsg message={error} />}
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md px-8 pt-6 pb-8 mb-4 rounded-lg"
+        className="bg-white shadow-md px-10 pt-8 pb-8 mb-4 rounded-lg"
       >
         <div className="mb-5">
           <label
@@ -84,6 +84,16 @@ export function Login() {
         <button className="bg-teal-400 hover:bg-teal-600 px-4 py-2 rounded-lg text-white font-bold shadow-md">
           Log in
         </button>
+
+        <p className="mt-5 text-gray-500">
+          Don't have an Account?
+          <Link
+            to="/register"
+            className="text-teal-400 mx-2 font-bold hover:text-teal-600"
+          >
+            Register !
+          </Link>{" "}
+        </p>
       </form>
 
       <button

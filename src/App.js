@@ -7,7 +7,7 @@ import { ProtectedRoutes } from "./components/ProtectedRoutes";
 
 function App() {
   return (
-    <div className="bg-slate-100 h-screen text-black flex">
+    <div className="bg-slate-100 h-screen text-black w-full">
       <Provider>
         <Routes>
           <Route
