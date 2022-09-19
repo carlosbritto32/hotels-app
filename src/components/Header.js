@@ -25,7 +25,7 @@ export function Header() {
 
         <button
           onClick={handleLogout}
-          className="text-stone-100 hover:text-stone-400 ml-6"
+          className="text-stone-100 hover:text-stone-400 ml-2"
         >
           Logout
         </button>

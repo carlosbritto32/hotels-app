@@ -4,6 +4,7 @@ import { Provider } from "./context/AuthContext";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { ProtectedRoutes } from "./components/ProtectedRoutes";
+import { PostForm } from "./components/PostForm";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/new" element={<PostForm />} />
         </Routes>
       </Provider>
     </div>
