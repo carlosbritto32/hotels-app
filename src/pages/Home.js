@@ -1,4 +1,24 @@
 import { useAuth } from "../context/AuthContext";
+import { db } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
+
+async function handleClick() {
+  try {
+    const docRef = await addDoc(collection(db, "hotels"), {
+      name: "hotelcito",
+      description: "beautifull",
+      country: "col",
+      state: "ris",
+      county: "pei",
+      logo: null,
+      type: "turism",
+      score: 4,
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
+}
 
 export function Home() {
   const { user, logout, loading } = useAuth();
@@ -26,12 +46,12 @@ export function Home() {
             Hotels App
           </a>
         </div>
-        <nav className="text-end">
+        <nav className="flex">
           <h2>Welcome {user.displayName || user.email} </h2>
 
           <button
             onClick={handleLogout}
-            className="text-stone-100 hover:text-stone-400"
+            className="text-stone-100 hover:text-stone-400 ml-6"
           >
             Logout
           </button>
@@ -42,7 +62,10 @@ export function Home() {
           Mmm. Looks like you haven't publish your hotel yet...
         </article>
 
-        <button className="bg-teal-400 hover:bg-teal-600 px-4 py-2 rounded-lg text-white font-bold shadow-md">
+        <button
+          onClick={handleClick}
+          className="bg-teal-400 hover:bg-teal-600 px-4 py-2 rounded-lg text-white font-bold shadow-md"
+        >
           Create Hotel
         </button>
       </section>
