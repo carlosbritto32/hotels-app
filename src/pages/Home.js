@@ -22,7 +22,7 @@ export function Home() {
     getHotels();
   }, [hotels]);
   return (
-    <div>
+    <div className="bg-slate-100">
       <Header />
       <div className="flex justify-end p-5">
         <Link
