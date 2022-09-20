@@ -1,4 +1,5 @@
 import { Header } from "./Header";
+import { useNavigate } from "react-router-dom";
 import { Formik, Field, Form } from "formik";
 import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -8,6 +9,7 @@ import { types } from "../utils/type";
 import { rooms } from "../utils/room";
 
 export function PostForm() {
+  const navigate = useNavigate();
   return (
     <>
       <Header />
@@ -24,6 +26,7 @@ export function PostForm() {
           try {
             const docRef = await addDoc(collection(db, "hotels"), values);
             console.log("Document written with ID: ", docRef.id);
+            navigate("/");
           } catch (error) {
             console.error("Error adding document: ", error);
           }
@@ -76,7 +79,7 @@ export function PostForm() {
               className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 mb-2"
             >
               {types.map((item) => (
-                <option>{item}</option>
+                <option key={item}>{item}</option>
               ))}
             </Field>
             <label className="block pl-2 text-sm font-bold">Room</label>
@@ -87,7 +90,7 @@ export function PostForm() {
               className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 mb-2"
             >
               {rooms.map((item) => (
-                <option>{item}</option>
+                <option key={item}>{item}</option>
               ))}
             </Field>
             <button
